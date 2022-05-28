@@ -1,7 +1,7 @@
 <?php
 class FakePersonDAO{
   
-  public function allFakePersons(){
+  public function getAllFakePersons(){
     $connect = new Connection();
     $connect = $connect->Connection();
     $stmt = $connect->prepare("SELECT * FROM fake_person");
@@ -10,6 +10,18 @@ class FakePersonDAO{
     $stmt = null;
 
     return $fake_persons;
+  }
+
+  public function getFakePersonId($id){
+    $connect = new Connection();
+    $connect = $connect->Connection();
+    $stmt = $connect->prepare("SELECT * FROM fake_person WHERE id = :id");
+    $stmt->bindParam("id", $id);
+    $stmt->execute();
+    $fake_person = $stmt->fetchAll();
+    $stmt = null;
+
+    return $fake_person;
   }
 }
 
