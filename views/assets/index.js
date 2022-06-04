@@ -32,51 +32,62 @@ $(document).ready(function () {
   });
 });
 
-/*
-    'scrollX': true,
-    'fixedHeader': false,
-    "responsive": true,
-    'lengthMenu': [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]],
-    'lengthChange': true,
-    'dom': 'Blfrtip',
-    "pagingType": "full_numbers",
-    'buttons': ['copy', 'excel', 'pdf', 'csv', 'print', 'colvis']
- */
 viewPF = document.getElementsByClassName('view');
 Array.from(viewPF).forEach((element) => {
   element.addEventListener("click", (e) => {
     console.log("ver => " + e.target.id);
     tr = e.target.parentNode.parentNode.parentNode;
-    data = tr.getElementsByTagName("img").getAttribute("src");
-    console.log(data);
-    /*
-    name2 = tr.getElementsByTagName("td")[1].innerText;
-    name3 = tr.getElementsByTagName("td")[2].innerText;
-    name4 = tr.getElementsByTagName("td")[3].innerText;
-    name5 = tr.getElementsByTagName("td")[4].innerText;
-    name6 = tr.getElementsByTagName("td")[5].innerText;
-    name7 = tr.getElementsByTagName("td")[6].innerText;
-    name8 = tr.getElementsByTagName("td")[7].innerText;
-    name9 = tr.getElementsByTagName("td")[8].innerText;
-    name10 = tr.getElementsByTagName("td")[9].innerText;
-    name11 = tr.getElementsByTagName("td")[10].innerText;
+    td_join = tr.getElementsByTagName("td")[1];
+    
+    fake_name = td_join.getElementsByClassName("fake_name")[0].innerText;
+    fake_email = td_join.getElementsByClassName("fake_email")[0].innerText;
+    fake_img = td_join.getElementsByClassName("fake_img")[0].src;
 
-    console.log("0 => " + name1);
-    console.log("1 => " + name2);
-    console.log("2 => " + name3);
-    console.log("3 => " + name4);
-    console.log("4 => " + name5);
-    console.log("5 => " + name6);
-    console.log("6 => " + name7);
-    console.log("7 => " + name8);
-    console.log("8 => " + name9);
-    console.log("9 => " + name10);
-    console.log("10 => " + name11);*/
+    fake_gender = tr.getElementsByTagName("td")[2].innerText;
+    fake_ip = tr.getElementsByTagName("td")[3].innerText;
+    fake_data_created = tr.getElementsByTagName("td")[4].innerText;
+    fake_data_update = tr.getElementsByTagName("td")[5].innerText;
 
+    fake_about = tr.getElementsByTagName("td")[7].innerText;
+    fake_social_midia = tr.getElementsByTagName("td")[8].innerText;
 
-
+    document.getElementById("nameViewModal").innerText = fake_name;
+    document.getElementById("imgViewModal").setAttribute("src", fake_img);
   })
-})
+});
+
+
+
+
+
+
+/*
+name2 = tr.getElementsByTagName("td")[1].innerText;
+name3 = tr.getElementsByTagName("td")[2].innerText;
+name4 = tr.getElementsByTagName("td")[3].innerText;
+name5 = tr.getElementsByTagName("td")[4].innerText;
+name6 = tr.getElementsByTagName("td")[5].innerText;
+name7 = tr.getElementsByTagName("td")[6].innerText;
+name8 = tr.getElementsByTagName("td")[7].innerText;
+name9 = tr.getElementsByTagName("td")[8].innerText;
+name10 = tr.getElementsByTagName("td")[9].innerText;
+name11 = tr.getElementsByTagName("td")[10].innerText;
+
+console.log("0 => " + name1);
+console.log("1 => " + name2);
+console.log("2 => " + name3);
+console.log("3 => " + name4);
+console.log("4 => " + name5);
+console.log("5 => " + name6);
+console.log("6 => " + name7);
+console.log("7 => " + name8);
+console.log("8 => " + name9);
+console.log("9 => " + name10);
+console.log("10 => " + name11);*/
+
+
+
+
 
 deletes = document.getElementsByClassName('delete');
 Array.from(deletes).forEach((element) => {

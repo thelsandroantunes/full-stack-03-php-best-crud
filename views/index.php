@@ -64,25 +64,26 @@
                                 src="'.$photo.'"
                                 alt=""
                                 style="width: 45px; height: 45px"
-                                class="rounded-circle"
+                                class="rounded-circle fake_img"
+                                id="fake_img"
                                 />
                             <div class="ms-3">
-                              <p class="fw-bold mb-1">'.$fake['first_name'] ." ". $fake['last_name'] .'</p>
-                              <p class="text-muted mb-0">'.$fake['email'].'</p>
+                              <p class="fw-bold mb-1 fake_name" id="fake_name">'.$fake['first_name'] ." ". $fake['last_name'] .'</p>
+                              <p class="text-muted mb-0 fake_email" id="fake_email">'.$fake['email'].'</p>
                             </div>
                           </div>';
                 echo "  </td>";            
                 echo "  <td>". $fake['gender']."</td>
                         <td>" . $fake['ip_address']."</td>  
                         <td>" . $fake['data_create']."</td>                   
-                        <td>" . $fake['data_update']."</td>";
-                echo '  <td style="display:none;">'. $fake['about'].'</td>
-                        <td style="display:none;">'. $fake['social_midia'].'</td>';
-                echo '  <td>
-                          <a href="#" data-toggle="modal" data-target="#modalShow" class="view btn btn-outline-primary btn-sm"  title="Visualizar" id="'.$fake['id'].'"><i class="fa fa-fw fa-eye" style="font-size:14px" id="'.$fake['id'].'"></i></a>
+                        <td>" . $fake['data_update']."</td>";                
+                echo '  <td>';
+                echo     '<a href="#" data-toggle="modal" data-target="#modalShow" class="view btn btn-outline-primary btn-sm"  title="Visualizar" id="'.$fake['id'].'"><i class="fa fa-fw fa-eye" style="font-size:14px" id="'.$fake['id'].'"></i></a>
                           <a href="#" class="edit btn btn-outline-warning btn-sm" data-toggle="tooltip" data-placement="left" title="Editar cadastro" id="'.$fake['id'].'"><i class="fa fa-fw fa-edit" style="font-size:14px" id="'.$fake['id'].'"></i></a>
                           <a href="#" class="delete btn btn-outline-danger btn-sm" data-toggle="tooltip" data-placement="left" title="Excluir cadastro" id="'.$fake['id'].'"><i class="fa fa-fw fa-trash" style="font-size:14px" id="'.$fake['id'].'"></i></a>
-                        </td>';                            
+                        </td>';         
+                echo '  <td style="display:none;">'. $fake['about'].'</td>
+                        <td style="display:none;">'. $fake['social_midia'].'</td>';                   
                 echo "</tr>";            
               }
             } else {
@@ -122,7 +123,15 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="nomeShowML">Título do modal</h5>
+          <div>
+            <div>
+              <img src="" alt="" id="imgViewModal">
+            </div>  
+            <h5 class="modal-title" id="nameViewModal">Título do modal</h5>
+          </div>
+          
+          
+
           <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
             <span aria-hidden="true">&times;</span>
           </button>
