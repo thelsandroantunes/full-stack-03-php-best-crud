@@ -46,6 +46,8 @@
             <th scope="col">Ações</th>
             <th style="display:none;">Sobre</th>
             <th style="display:none;">Mídia Social</th>
+            <th style="display:none;">Cargo</th>
+            <th style="display:none;">Empresa</th>
           </tr>
         </thead>
         <tbody>
@@ -68,7 +70,7 @@
                                 id="fake_img"
                                 />
                             <div class="ms-3">
-                              <p class="fw-bold mb-1 fake_name" id="fake_name">'.$fake['first_name'] ." ". $fake['last_name'] .'</p>
+                              <p class="fw-bold mb-1 fake_name" id="fake_name">'.$fake['first_name'] ." ". $fake['last_name'] .'</p>                              
                               <p class="text-muted mb-0 fake_email" id="fake_email">'.$fake['email'].'</p>
                             </div>
                           </div>';
@@ -83,7 +85,9 @@
                           <a href="#" class="delete btn btn-outline-danger btn-sm" data-toggle="tooltip" data-placement="left" title="Excluir cadastro" id="'.$fake['id'].'"><i class="fa fa-fw fa-trash" style="font-size:14px" id="'.$fake['id'].'"></i></a>
                         </td>';         
                 echo '  <td style="display:none;">'. $fake['about'].'</td>
-                        <td style="display:none;">'. $fake['social_midia'].'</td>';                   
+                        <td style="display:none;">'. $fake['social_midia'].'</td>
+                        <td style="display:none;">'. $fake['office'].'</td>
+                        <td style="display:none;">'. $fake['company'].'</td>';
                 echo "</tr>";            
               }
             } else {
@@ -123,15 +127,23 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <div>
-            <div>
-              <img src="" alt="" id="imgViewModal">
-            </div>  
-            <h5 class="modal-title" id="nameViewModal">Título do modal</h5>
-          </div>
           
-          
-
+              <div class="img-fake">
+                <img src="" alt="fake-img" id="imgViewModal" />
+              </div>
+              <div>
+                <h2 id="nameViewModal"> Fake First Name </h2>
+                <p id="officeViewModal"><i class="fa fa-briefcase" aria-hidden="true"></i><span> Fake Office</span></p>
+                <p id="companyViewModal"><i class="fa fa-building" aria-hidden="true"></i><span> Fake Company</span></p>
+              </div>
+              
+              <div class="icons">
+                <a href="#"><i class="ion-ios-home"></i></a>
+                <a href="#"><i class="ion-ios-email"></i></a>
+                <a href="#"><i class="ion-ios-telephone"></i></a>
+              </div>
+        
+                 
           <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -152,8 +164,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     
-    <script type="text/javascript" src="./assets/index.js"></script>
-
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js" 
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
     crossorigin="anonymous"></script>    
@@ -161,8 +171,9 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-  <!-- ===== JS End===== --> 
 
+    <script type="text/javascript" src="./assets/index.js"></script>
+  <!-- ===== JS End===== --> 
 </body>
 
 </html>

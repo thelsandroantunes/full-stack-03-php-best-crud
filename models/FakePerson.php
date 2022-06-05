@@ -12,6 +12,7 @@ class FakePerson{
   private $data_create;
   private $about;
   private $data_update;
+  private $office;
 
   //Method GETs
   public function getFirstName(){
@@ -44,7 +45,9 @@ class FakePerson{
   public function getDataUpDate(){
     return $this->data_update;
   }
-
+  public function getOffice(){
+    return $this->office;
+  }
   //Method SETs
   public function setFirstName($first_name){
     $this->first_name = $first_name;
@@ -75,6 +78,9 @@ class FakePerson{
   }
   public function setDataUpdate($data_update){
     $this->data_update = $data_update;
+  }
+  public function setOffice($office){
+    $this->office = $office;
   }
 
 }

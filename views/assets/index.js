@@ -39,7 +39,9 @@ Array.from(viewPF).forEach((element) => {
     tr = e.target.parentNode.parentNode.parentNode;
     td_join = tr.getElementsByTagName("td")[1];
     
-    fake_name = td_join.getElementsByClassName("fake_name")[0].innerText;
+    let fake_name = td_join.getElementsByClassName("fake_name")[0].innerText;    
+    //const myArrayName = fake_name.split(" ");
+
     fake_email = td_join.getElementsByClassName("fake_email")[0].innerText;
     fake_img = td_join.getElementsByClassName("fake_img")[0].src;
 
@@ -50,9 +52,15 @@ Array.from(viewPF).forEach((element) => {
 
     fake_about = tr.getElementsByTagName("td")[7].innerText;
     fake_social_midia = tr.getElementsByTagName("td")[8].innerText;
+    fake_office = tr.getElementsByTagName("td")[9].innerText;
+    fake_company = tr.getElementsByTagName("td")[10].innerText;
 
     document.getElementById("nameViewModal").innerText = fake_name;
     document.getElementById("imgViewModal").setAttribute("src", fake_img);
+    
+    document.getElementById("emailViewModal").innerText = fake_email;
+    document.getElementById("officeViewModal").innerText = fake_office;
+    document.getElementById("companyViewModal").innerText = fake_company;
   })
 });
 

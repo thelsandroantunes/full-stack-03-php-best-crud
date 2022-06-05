@@ -4,7 +4,7 @@ class FakePersonDAO{
   public function getAllFakePersons(){
     $connect = new Connection();
     $connect = $connect->Connection();
-    $stmt = $connect->prepare("SELECT * FROM fake_person");
+    $stmt = $connect->prepare("SELECT * FROM fake_person LIMIT 15");
     $stmt->execute();
     $fake_persons = $stmt->fetchAll();
     $stmt = null;
