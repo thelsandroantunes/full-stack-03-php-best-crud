@@ -38,8 +38,8 @@ Array.from(viewPF).forEach((element) => {
     console.log("ver => " + e.target.id);
     tr = e.target.parentNode.parentNode.parentNode;
     td_join = tr.getElementsByTagName("td")[1];
-    
-    let fake_name = td_join.getElementsByClassName("fake_name")[0].innerText;    
+
+    let fake_name = td_join.getElementsByClassName("fake_name")[0].innerText;
     //const myArrayName = fake_name.split(" ");
 
     fake_email = td_join.getElementsByClassName("fake_email")[0].innerText;
@@ -57,10 +57,10 @@ Array.from(viewPF).forEach((element) => {
 
     document.getElementById("nameViewModal").innerText = fake_name;
     document.getElementById("imgViewModal").setAttribute("src", fake_img);
-    
-    document.getElementById("emailViewModal").innerText = fake_email;
-    document.getElementById("officeViewModal").innerText = fake_office;
-    document.getElementById("companyViewModal").innerText = fake_company;
+    document.getElementById("officeViewModal").textContent = ' Fake Office'+fake_office;
+    document.getElementById("companyViewModal").textContent = ' Fake Company'+fake_company;
+    document.getElementById("emailViewModal").textContent = ' '+fake_email;
+
   })
 });
 
