@@ -55,11 +55,16 @@ Array.from(viewPF).forEach((element) => {
     fake_office = tr.getElementsByTagName("td")[9].innerText;
     fake_company = tr.getElementsByTagName("td")[10].innerText;
 
-    document.getElementById("nameViewModal").innerText = fake_name;
-    document.getElementById("imgViewModal").setAttribute("src", fake_img);
-    document.getElementById("officeViewModal").textContent = ' Fake Office'+fake_office;
-    document.getElementById("companyViewModal").textContent = ' Fake Company'+fake_company;
-    document.getElementById("emailViewModal").textContent = ' '+fake_email;
+    document.getElementById("nameModal").textContent = fake_name;
+    document.getElementById("imgModal").setAttribute("src", fake_img);
+    document.getElementById("officeModal").textContent = ' Fake Office'+fake_office;
+    document.getElementById("companyModal").textContent = ' Fake Company'+fake_company;
+    document.getElementById("emailModal").textContent = ' '+fake_email;
+
+    document.getElementById("aboutModal").textContent = fake_about;
+    document.getElementById("genderModal").textContent = fake_gender;
+    document.getElementById("ipModal").textContent = fake_ip;
+    document.getElementById("dataCreatedModal").textContent = fake_data_created;
 
   })
 });

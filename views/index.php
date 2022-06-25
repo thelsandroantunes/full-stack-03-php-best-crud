@@ -103,7 +103,6 @@
                       <td > </td >
                     </tr>';
             }
-            
           ?>
         </tbody>
         <tfoot class="bg-light" style="font-size:14px">
@@ -132,20 +131,30 @@
         <div class="modal-header">
 
           <div class="img-fake">
-            <img src="" alt="fake-img" id="imgViewModal" />
+            <img src="" alt="fake-img" id="imgModal" />
           </div>
           <div>
-            <h2 id="nameViewModal"> Fake First Name </h2>
-            <h7><i class="fa fa-briefcase" aria-hidden="true"></i><span id="officeViewModal"> Fake Office</span></h7></br>
-            <h7><i class="fa fa-institution" aria-hidden="true"></i><span id="companyViewModal"> Fake Company</span></h7></br>
-            <h7><i class="fa fa-envelope" aria-hidden="true"></i><span id="emailViewModal"> Fake Email</span></h7>
+            <h2 id="nameModal"> Fake First Name </h2>
+            <h7><i class="fa fa-briefcase" aria-hidden="true"></i><span id="officeModal"> Fake Office</span></h7></br>
+            <h7><i class="fa fa-institution" aria-hidden="true"></i><span id="companyModal"> Fake Company</span></h7></br>
+            <h7><i class="fa fa-envelope" aria-hidden="true"></i><span id="emailModal"> Fake Email</span></h7>
           </div>
           <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          ...
+          <h7><span style="font-weight: bold;">About</span></h7>
+          <p id="aboutModal" style="text-align: justify;"></p>
+
+          <h7><span style="font-weight: bold;">Gender</span></h7>
+          <p id="genderModal" style="text-align: justify;"></p>
+
+          <h7><span style="font-weight: bold;">IP</span></h7>
+          <p id="ipModal" style="text-align: justify;"></p>
+
+          <h7><span style="font-weight: bold;">Data Created</span></h7>
+          <p id="dataCreatedModal" style="text-align: justify;"></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
