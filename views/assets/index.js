@@ -1,140 +1,130 @@
+function fecharModal(){
+  $('#modalEdit').modal('hide');
+  $('.modal-backdrop').hide();
+}
 
-$(document).ready(function () {
-  $('#myTable').DataTable({
-    "language": {
-      "emptyTable": "Nenhum registro encontrado",
-      "info": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-      "infoEmpty": "Mostrando 0 até 0 de 0 registros",
-      "infoFiltered": "(Filtrados de _MAX_ registros)",
-      "infoPostFix": "",
-      "infoThousands": ".",
-      "lengthMenu": "_MENU_ resultados por página",
-      "loadingRecords": "Carregando...",
-      "processing": "Processando...",
-      "zeroRecords": "Nenhum registro encontrado",
-      "search": "Pesquisar",
-      "paginate": {
-        "next": "Próximo",
-        "previous": "Anterior",
-        "first": "Primeiro",
-        "last": "Último"
-      },
-      "aria": {
-        "sortAscending": ": Ordenar colunas de forma ascendente",
-        "sortDescending": ": Ordenar colunas de forma descendente"
+//View User
+  view_user = document.getElementsByClassName('view');
+  Array.from(view_user).forEach((element) => {
+    element.addEventListener("click", (e) => {
+
+      console.log("view => " + e.target.id);
+
+      tr = e.target.parentNode.parentNode.parentNode;
+      qty_td = tr.getElementsByTagName("td");
+      const arrayClassName = ['fake_name', 'fake_email', 'fake_img'];
+      const arrayIdName = [ 'nameModal', //0
+                            'emailModal',//1
+                            'imgModal',//2
+                            'genderModal', //3
+                            'ipModal',//4
+                            'dataCreatedModal',//5
+                            'dataUpdateModal', //6
+                            'aboutModal',//7
+                            'socialMidiaModal', //8
+                            'officeModal',//9
+                            'companyModal',//10
+                          ];
+      let arrayVariables = [];
+
+      for (let index = 0; index < qty_td.length; index++) {
+        if(index == 0){
+          arrayClassName.forEach((element, i) => {
+            if (i != 2) {
+              arrayVariables.push(qty_td[1].getElementsByClassName(element)[index].innerText);
+            }else{
+              arrayVariables.push(qty_td[1].getElementsByClassName(element)[index].src);
+            }
+          });
+        }else if(index == 1 || index == 6){
+        }else{
+          arrayVariables.push(tr.getElementsByTagName("td")[index].innerText);
+        }
       }
-    },
-    "responsive": true,
-    'lengthMenu': [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]],
-    'lengthChange': true,
-    "pagingType": "full_numbers",
-    "pageLength": 5,
+
+      arrayIdName.forEach((element, index) => {
+        if (index == 2) {
+          document.getElementById(element).setAttribute("src", arrayVariables[index]);
+        }else if(index == 6 || index == 8){
+        }else if(index == 9){
+          if(arrayVariables[index] == ""){
+            document.getElementById(element).textContent = 'Fake Office';
+          }else{
+            document.getElementById(element).textContent = arrayVariables[index];
+          }
+        }else if(index == 10){
+          if(arrayVariables[index] == ""){
+            document.getElementById(element).textContent = 'Fake Company';
+          }else{
+            document.getElementById(element).textContent = arrayVariables[index];
+          }
+        }else{
+          document.getElementById(element).textContent = arrayVariables[index];
+        }
+      });
+
+    })
   });
-});
+//Edit User
+ function editModal(id) {
+  $.ajax({
+      data: {id:id},
+      type: 'POST',
+      url:'../controllers/editModal.php',
+      beforeSend:function() {
+          $('#modalEdit').modal('show');
+      },
+      success:function(html) {
+          $('#modalEdit').find('.modal-content').html(html);
+          $('#modalEdit').find('.modal-content').find('form');
+          $('#modalEdit').find('show');
+      }
+  });
+}
+ //Save Edit
+  function save_editModal(){
+    console.log('ENTROU');
+    fake_first_edit = document.getElementById("fake_first_edit").value;
 
-viewPF = document.getElementsByClassName('view');
-Array.from(viewPF).forEach((element) => {
-  element.addEventListener("click", (e) => {
-    console.log("ver => " + e.target.id);
-    tr = e.target.parentNode.parentNode.parentNode;
-    td_join = tr.getElementsByTagName("td")[1];
+    fake_last_edit = document.getElementById("fake_last_edit").value;
 
-    let fake_name = td_join.getElementsByClassName("fake_name")[0].innerText;
-    //const myArrayName = fake_name.split(" ");
+    fake_email_edit = document.getElementById("fake_email_edit").value;
 
-    fake_email = td_join.getElementsByClassName("fake_email")[0].innerText;
-    fake_img = td_join.getElementsByClassName("fake_img")[0].src;
+    //fake_img_edit = document.getElementById("fake_img_edit").value;
 
-    fake_gender = tr.getElementsByTagName("td")[2].innerText;
-    fake_ip = tr.getElementsByTagName("td")[3].innerText;
-    fake_data_created = tr.getElementsByTagName("td")[4].innerText;
-    fake_data_update = tr.getElementsByTagName("td")[5].innerText;
+    fake_gender_edit = document.getElementById("fake_gender_edit").value;
+    fake_ip_edit = document.getElementById("fake_ip_edit").value;
+    fake_about_edit = document.getElementById("fake_about_edit").value;
+    fake_social_edit = document.getElementById("fake_social_edit").value;
+    fake_office_edit = document.getElementById("fake_office_edit").value;
+    fake_company_edit = document.getElementById("fake_company_edit").value;
+    fake_id_edit = document.getElementById("fake_id_edit").value;
 
-    fake_about = tr.getElementsByTagName("td")[7].innerText;
-    fake_social_midia = tr.getElementsByTagName("td")[8].innerText;
-    fake_office = tr.getElementsByTagName("td")[9].innerText;
-    fake_company = tr.getElementsByTagName("td")[10].innerText;
+console.log(fake_id_edit)
+    $.ajax({
+      data: {
+        fake_first_edit: fake_first_edit,
+        fake_last_edit: fake_last_edit,
+        fake_email_edit: fake_email_edit,
+        fake_gender_edit: fake_gender_edit,
+        fake_ip_edit: fake_ip_edit,
+        fake_about_edit: fake_about_edit,
+        fake_social_edit: fake_social_edit,
+        fake_office_edit: fake_office_edit,
+        fake_company_edit: fake_company_edit,
+        fake_id_edit:fake_id_edit,
+      },
+      type: "POST",
+      url: "../controllers/editModalValid.php",
+      success: function(data){
+        if(data == "success"){
+          console.log('Success save edit');
+          window.location.href = '../index.php';
+        }
+        if (data == 'teste') {
+          console.log('dont');
+        }
+      }
+    });
 
-    document.getElementById("nameModal").textContent = fake_name;
-    document.getElementById("imgModal").setAttribute("src", fake_img);
-    document.getElementById("officeModal").textContent = ' Fake Office'+fake_office;
-    document.getElementById("companyModal").textContent = ' Fake Company'+fake_company;
-    document.getElementById("emailModal").textContent = ' '+fake_email;
-
-    document.getElementById("aboutModal").textContent = fake_about;
-    document.getElementById("genderModal").textContent = fake_gender;
-    document.getElementById("ipModal").textContent = fake_ip;
-    document.getElementById("dataCreatedModal").textContent = fake_data_created;
-
-  })
-});
-
-
-
-
-
-
-/*
-name2 = tr.getElementsByTagName("td")[1].innerText;
-name3 = tr.getElementsByTagName("td")[2].innerText;
-name4 = tr.getElementsByTagName("td")[3].innerText;
-name5 = tr.getElementsByTagName("td")[4].innerText;
-name6 = tr.getElementsByTagName("td")[5].innerText;
-name7 = tr.getElementsByTagName("td")[6].innerText;
-name8 = tr.getElementsByTagName("td")[7].innerText;
-name9 = tr.getElementsByTagName("td")[8].innerText;
-name10 = tr.getElementsByTagName("td")[9].innerText;
-name11 = tr.getElementsByTagName("td")[10].innerText;
-
-console.log("0 => " + name1);
-console.log("1 => " + name2);
-console.log("2 => " + name3);
-console.log("3 => " + name4);
-console.log("4 => " + name5);
-console.log("5 => " + name6);
-console.log("6 => " + name7);
-console.log("7 => " + name8);
-console.log("8 => " + name9);
-console.log("9 => " + name10);
-console.log("10 => " + name11);*/
-
-
-
-
-
-deletes = document.getElementsByClassName('delete');
-Array.from(deletes).forEach((element) => {
-  element.addEventListener("click", (e) => {
-    console.log("deletar ");
-    sno = e.target.id.substr(1);
-
-    if (confirm("Tem certeza de que deseja excluir esta anotação!")) {
-      console.log("sim");
-      window.location = `index.php?delete=${sno}`;
-      // TODO: Crie um formulário e use a solicitação de postagem para enviar um formulário
-    }
-    else {
-      console.log("não");
-    }
-  })
-})
-
-edits = document.getElementsByClassName('edit');
-Array.from(edits).forEach((element) => {
-  element.addEventListener("click", (e) => {
-    console.log("editar");
-    tr = e.target.parentNode.parentNode;
-    name = tr.getElementsByTagName("td")[0].innerText;
-    id_no = tr.getElementsByTagName("td")[1].innerText;
-
-    console.log(name, id_no);
-    console.log(e.target.id)
-
-    nameEdit.value = name;
-    id_noEdit.value = id_no;
-    snoEdit.value = e.target.id;
-
-    $('#editModal').modal('toggle');
-  })
-})
-
+  }

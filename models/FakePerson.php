@@ -1,7 +1,8 @@
 <?php
 
 class FakePerson{
-  
+
+  private $id;
   private $first_name;
   private $last_name;
   private $email;
@@ -13,8 +14,12 @@ class FakePerson{
   private $about;
   private $data_update;
   private $office;
+  private $company;
 
   //Method GETs
+  public function getId(){
+    return $this->id;
+  }
   public function getFirstName(){
     return $this->first_name;
   }
@@ -48,7 +53,13 @@ class FakePerson{
   public function getOffice(){
     return $this->office;
   }
+  public function getCompany(){
+    return $this->company;
+  }
   //Method SETs
+  public function setId($id){
+    $this->id = $id;
+  }
   public function setFirstName($first_name){
     $this->first_name = $first_name;
   }
@@ -82,7 +93,9 @@ class FakePerson{
   public function setOffice($office){
     $this->office = $office;
   }
-
+  public function setCompany($company){
+    $this->company = $company;
+  }
 }
 
 ?>
